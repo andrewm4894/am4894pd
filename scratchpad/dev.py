@@ -9,4 +9,21 @@ df = df_dummy_ts()
 
 #%%
 
+df = pd.DataFrame(
+    [
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+    ],
+    columns=['a', 'b', 'c']
+)
 print(df)
+
+#%%
+
+
+#%%
+
+#df_dupe_check(df)
+df_dupe_check(df, keys=['a'])
+
