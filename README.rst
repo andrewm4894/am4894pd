@@ -30,7 +30,7 @@ My Pandas utilities package.
 Features
 --------
 
-* TODO!
+* TODO!!
 
 Credits
 -------
