@@ -10,6 +10,6 @@ def test_df_info():
 
 def test_df_dummy_ts():
     df = df_dummy_ts()
-    assert df.shape == (86401, 6)
-    assert df.columns.tolist() == ['time', 'col0', 'col1', 'col2', 'col3', 'col4']
+    assert df.shape == (86401, 5)
+    assert df.columns.tolist() == ['col0', 'col1', 'col2', 'col3', 'col4']
 

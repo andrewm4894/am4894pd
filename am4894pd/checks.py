@@ -19,13 +19,17 @@ def df_check_dupes(df: pd.DataFrame, keys: list = None, return_str: bool = False
         return ret_str
 
 
-def df_check_gaps(df: pd.DataFrame, key: str = 'time', thold: float = 1, sort: bool = True, return_str: bool = False):
+def df_check_gaps(df: pd.DataFrame, key: str = None, thold: float = 1, sort: bool = True, return_str: bool = False):
     """Check for gaps in time based key.
     """
     num_rows = len(df)
+    if key:
+        key_data = df[key]
+    else:
+        key_data = df.index.to_series()
     if sort:
-        df = df.sort_values(key)
-    gap_secs = (df[key] - df[key].shift(1)).dt.total_seconds()
+        key_data = key_data.sort_values()
+    gap_secs = (key_data - key_data.shift(1)).dt.total_seconds()
     gaps = gap_secs[gap_secs > thold]
     num_gaps = len(gaps)
     pct_gaps = round(num_gaps / num_rows, 4) * 100

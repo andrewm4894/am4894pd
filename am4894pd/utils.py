@@ -21,6 +21,7 @@ def df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1s', n_cols=5):
     time_range = pd.DataFrame(pd.date_range(start, end, freq=freq), columns=['time'])
     data = pd.DataFrame(np.random.randn(len(time_range), n_cols), columns=[f'col{n}' for n in range(n_cols)])
     df = pd.concat([time_range, data], axis=1)
+    df = df.set_index('time')
     return df
 
 
