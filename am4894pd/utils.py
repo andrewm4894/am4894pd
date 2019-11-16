@@ -24,19 +24,3 @@ def df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1s', n_cols=5):
     return df
 
 
-def df_dupe_check(df: pd.DataFrame, keys: list = None, return_str=False):
-    """Given a df and list of keys print some info on dupes.
-    """
-    if keys:
-        df_keys = df[keys]
-    else:
-        df_keys = df.index.to_series()
-    num_keys = len(df_keys.drop_duplicates())
-    num_rows = len(df)
-    num_dupes = num_rows - num_keys
-    dupe_pct = round(num_dupes / num_rows, 2)
-    ret_str = f'rows={num_rows}, keys={num_keys}, dupes={num_dupes}, dupe_pct={dupe_pct}%'
-    print(ret_str)
-    if return_str:
-        return ret_str
-

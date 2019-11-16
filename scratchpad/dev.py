@@ -4,26 +4,10 @@
 import pandas as pd
 import numpy as np
 from am4894pd.utils import df_dummy_ts
+from am4894pd.checks import df_check_dupes, df_check_gaps
 
 df = df_dummy_ts()
 
 #%%
 
-df = pd.DataFrame(
-    [
-        [1, 1, 1],
-        [1, 1, 1],
-        [1, 1, 1],
-    ],
-    columns=['a', 'b', 'c']
-)
-print(df)
-
-#%%
-
-
-#%%
-
-#df_dupe_check(df)
-df_dupe_check(df, keys=['a'])
-
+df_check_gaps(df, thold=0.99)
