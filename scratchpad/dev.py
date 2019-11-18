@@ -1,14 +1,14 @@
 
 #%%
 
-import pandas as pd
-import numpy as np
 from am4894pd.utils import df_dummy_ts
-from am4894pd.checks import df_check_dupes, df_check_gaps
+import matplotlib.pyplot as plt
 
-df = df_dummy_ts()
+df = df_dummy_ts(n_cols=3, smooth_n=10000, smooth_f='median')
 
 #%%
 
-df_check_gaps(df, thold=0.99)
+df.plot()
+plt.show()
+
 
