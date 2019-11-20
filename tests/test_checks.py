@@ -17,7 +17,7 @@ def test_df_check_dupes():
 
 
 def test_df_check_gaps():
-    df = df_dummy_ts(n_cols=1)
-    assert df_check_gaps(df, return_str=True) == "Gaps = 0 (0.0%)"
-    assert df_check_gaps(df, thold=0.99, return_str=True) == "Gaps = 86400 (100.0%)"
+    df = df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1min', n_cols=1, dropna=False)
+    assert df_check_gaps(df, thold=61, return_str=True) == "Gaps = 0 (0.0%)"
+    assert df_check_gaps(df, thold=1, return_str=True) == "Gaps = 1440 (99.92999999999999%)"
 

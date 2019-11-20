@@ -9,7 +9,7 @@ def test_df_info():
 
 
 def test_df_dummy_ts():
-    df = df_dummy_ts()
-    assert df.shape == (86401, 5)
-    assert df.columns.tolist() == ['col0', 'col1', 'col2', 'col3', 'col4']
+    df = df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1min', n_cols=2, dropna=False)
+    assert df.shape == (1441, 2)
+    assert df.columns.tolist() == ['col0', 'col1']
 

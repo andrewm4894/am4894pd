@@ -16,7 +16,7 @@ def df_info(df: pd.DataFrame, return_info=False, shape=True, cols=True, info_pre
 
 
 def df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1s', n_cols=5,
-                smooth_n: int = 100, smooth_f: str = 'mean'):
+                smooth_n: int = 100, smooth_f: str = 'mean', dropna: bool = True):
     """ Make dummy ts df.
     """
     time_range = pd.DataFrame(pd.date_range(start, end, freq=freq), columns=['time'])
@@ -34,6 +34,8 @@ def df_dummy_ts(start='2019-01-01', end='2019-01-02', freq='1s', n_cols=5,
             df = df.rolling(smooth_n).median()
         else:
             raise NotImplementedError(f'... {smooth_f} not implemented ...')
+    if dropna:
+        df = df.dropna()
     return df
 
 
